@@ -1,0 +1,241 @@
+
+/************************************************************/
+/************************************************************/
+/************************************************************/
+/*************** Cambridge Datasets Module CSS **************/
+/************************************************************/
+/************************************************************/
+/************************************************************/
+
+
+/************************************************************/
+/*************** Override Project Light styling *************/
+/************************************************************/
+
+/* Turn off conventional breadcrumb trail as system doesn't need it */
+
+#breadcrumb {
+    display:                none;
+}
+
+/* Give 'h2' a bit more top padding than default Project Light */
+
+h2 {
+    padding-top:            8px;
+}
+
+/* Override colour of table header links when used to sort fields */
+
+th a, th a:hover, th a:visited {
+    color:                  #ffffff;
+}
+
+/* Hide 'grippie' element that appears beneath Project Light textareas */
+
+.grippie {
+    display:                none;
+}
+
+/* Add space beneath form elements */
+
+select, 
+textarea, 
+input[type="text"], 
+input[type="password"], 
+input[type="datetime"], 
+input[type="datetime-local"], 
+input[type="date"], 
+input[type="month"], 
+input[type="time"], 
+input[type="week"], 
+input[type="number"], 
+input[type="email"], 
+input[type="url"], 
+input[type="search"], 
+input[type="tel"], 
+input[type="color"], 
+.campl-uneditable-input {
+    margin-bottom:          1px!important;
+}
+
+
+/************************************************************/
+/*** Override Drupal form elements for tidier presentation **/
+/************************************************************/
+
+/* Make form into two columns with labels aligned right */
+
+.form-apply label {
+    width:                  200px;
+    float:                  left;
+    text-align:             right;
+    margin-right:           10px;
+    margin-top:             5px;
+}
+
+.form-textarea-wrapper textarea {
+    width:                  auto;
+}
+
+/* Stylize 'agree' checkbox on terms page */
+
+.form-item-agree {
+    padding:                20px;
+    font-size:              120%;
+    background-color:       #EEE;
+} 
+
+/* Highlight checkbox on error */
+
+.form-item input[type="checkbox"].error, 
+.form-item input[type="radio"].error {
+    outline:                2px solid red;
+    -moz-appearance:        none;
+}
+
+
+/************************************************************/
+/*********** Cambridge Dataset Application Classes **********/
+/************************************************************/
+
+/* Extra top padding */
+
+.cambridge-datasets-extrapadding-top {
+    padding-top:            20px;
+}
+
+/* Table indents */
+
+.cambridge-datasets-indent-1 {text-indent: 10px;}
+.cambridge-datasets-indent-2 {text-indent: 20px;}
+.cambridge-datasets-indent-3 {text-indent: 30px;}
+.cambridge-datasets-indent-4 {text-indent: 40px;}
+
+/* Add button below field collection views, eg. reviewers, datasets, reviews */
+
+.cambridge-datasets-add-button {
+    padding:                6px 30px 6px 30px;
+    margin-bottom:          20px;
+}
+
+/* Apply button on collection overview page */
+
+.cambridge-datasets-apply-button {
+    padding:                12px;
+    font-size:              1.2em;
+    width:                  100%;
+    font-weight:            normal;
+}
+
+/* Datasets interactive selector */
+
+.cambridge-datasets-dataset-container {
+    width:                  100%;
+    font-weight:            bold;
+    padding-bottom:         5px;
+}
+
+ul#cambridge-datasets-dataset-ul {
+    padding-left:           0px;
+    margin:                 0px;
+}
+
+.cambridge-datasets-dataset-item {
+    height:                 24px;
+    list-style:             none;
+    border-bottom:          1px;
+    border-color:           #c1c1c1;
+    border-style:           solid;
+    padding-top:            8px;
+    border-left:            0px;
+    border-right:           0px;
+    border-top:             0px;
+}
+
+.cambridge-datasets-dataset-item:hover {
+    background-color:       beige;
+    cursor:                 pointer;
+}
+
+.cambridge-datasets-dataset-item-col1 {
+    width:                  200px;
+    display:                block;
+    float:                  left;
+    overflow:               hidden;
+    margin-right:           20px;
+}
+
+.cambridge-datasets-dataset-item-col2 {
+    width:                  1300px;
+    display:                block;
+}
+
+/* Styles used within review functionality, eg. add comment */
+
+.cambridge-datasets-add-comment input[type='radio'],
+.cambridge-datasets-add-comment label{
+    display:                inline;
+    padding-left:           5px;
+    padding-right:          10px;
+}
+
+.cambridge-datasets-add-comment label{
+    padding-right:          20px;
+}
+
+.cambridge-datasets-add-comment textarea{
+    width:                  100%;
+}
+
+.cambridge-datasets-add-comment input[type='submit']{
+    margin-top:             10px;
+    padding-left:           20px;
+    padding-right:          20px;
+}
+
+.cambridge-datasets-finalreviewer-buttons {
+    padding-bottom:         20px;
+}
+
+button.cambridge-datasets-application-reject,
+button.cambridge-datasets-application-approve,
+button.cambridge-datasets-application-processed {
+    color:                  white;
+    box-shadow:             inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+    padding:                6px 12px;
+    margin-bottom:          0;
+    font-size:              14px;
+    font-weight:            400;
+    line-height:            1.42857143;
+    text-align:             center;
+    white-space:            nowrap;
+    vertical-align:         middle;
+    -ms-touch-action:       manipulation;
+    touch-action:           manipulation;
+    cursor:                 pointer;
+    -webkit-user-select:    none;
+    -moz-user-select:       none;
+    -ms-user-select:        none;
+    user-select:            none;
+    background-image:       none;
+    border:                 1px solid transparent;
+    border-radius:          4px;
+}
+
+button.cambridge-datasets-application-reject {
+    background-color:       #d9534f;
+    border-color:           #b92c28;
+    background-image:       linear-gradient(to bottom,#d9534f 0,#c12e2a 100%);
+}    
+
+button.cambridge-datasets-application-approve {
+    background-color:       #5cb85c;
+    border-color:           #3e8f3e;
+    background-image:       linear-gradient(to bottom,#5cb85c 0,#419641 100%);
+}    
+
+button.cambridge-datasets-application-processed {
+    background-color:       #5bc0de;
+    border-color:           #28a4c9;
+    background-image:       linear-gradient(to bottom,#5bc0de 0,#2aabd2 100%);
+}    

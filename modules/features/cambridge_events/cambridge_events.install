@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Implements hook_uninstall().
+ */
+function cambridge_events_uninstall() {
+  $formats = cambridge_events_date_formats();
+  
+  foreach($formats as $format) {
+    variable_del('date_format_' . $format['type']);
+  }
+}

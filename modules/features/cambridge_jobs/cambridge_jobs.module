@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Jobs feature.
+ */
+
+include_once 'cambridge_jobs.features.inc';

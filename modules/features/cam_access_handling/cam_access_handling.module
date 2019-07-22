@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Cam Access Handling feature.
+ */
+
+include_once 'cam_access_handling.features.inc';

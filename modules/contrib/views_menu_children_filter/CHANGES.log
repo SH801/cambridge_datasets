@@ -1,0 +1,5 @@
+2017-06-29
+Brian:
+No longer displays menu root elements if the provided page argument
+does not match a node within the target menus. Now returns zero results.
+Reference issue: #2890887

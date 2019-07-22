@@ -1,0 +1,41 @@
+<?php
+/**
+ * @file
+ * Code for the Events feature.
+ */
+
+include_once 'cambridge_events.features.inc';
+
+/**
+ * Implements hook_date_format_types().
+ */
+function cambridge_events_date_format_types() {
+  return array(
+    'cambridge_events_day_only'  => t('Events day'),
+    'cambridge_events_short_month_only'  => t('Events month'),
+  );
+}
+
+/**
+ * Implements hook_date_formats().
+ */
+function cambridge_events_date_formats() {
+  $formats = array(
+    array(
+      'type' => 'cambridge_events_day_only',
+      'format' => 'd',
+      'locales' => array(),
+    ),
+    array(
+      'type' => 'cambridge_events_short_month_only',
+      'format' => 'M',
+      'locales' => array(),
+    ),
+  );
+  
+  foreach($formats as $format) {
+    variable_set('date_format_' . $format['type'], $format['format']);
+  }
+  
+  return $formats;
+}
