@@ -39,7 +39,7 @@ function cambridge_datasets_ckeditor_profile_defaults() {
     ',
         'expand' => 't',
         'width' => '100%',
-        'lang' => 'en',
+        'lang' => 'en-uk',
         'auto_lang' => 't',
         'language_direction' => 'default',
         'enter_mode' => 'p',
@@ -63,6 +63,7 @@ function cambridge_datasets_ckeditor_profile_defaults() {
         'ckeditor_load_time_out' => 0,
         'scayt_autoStartup' => 'f',
         'html_entities' => 'f',
+        'js_conf' => 'config.allowedContent = true;',
       ),
       'input_formats' => array(
         'filtered_html' => 'Filtered HTML',
@@ -102,7 +103,7 @@ function cambridge_datasets_ckeditor_profile_defaults() {
         'uicolor' => 'default',
         'uicolor_user' => 'default',
         'width' => '100%',
-        'lang' => 'en',
+        'lang' => 'en-uk',
         'auto_lang' => 't',
         'language_direction' => 'default',
         'allowed_content' => 'f',
@@ -134,7 +135,7 @@ function cambridge_datasets_ckeditor_profile_defaults() {
         'html_entities' => 'f',
         'scayt_autoStartup' => 'f',
         'theme_config_js' => 'f',
-        'js_conf' => '',
+        'js_conf' => 'config.allowedContent = true;',
         'loadPlugins' => array(
           'drupalbreaks' => array(
             'name' => 'drupalbreaks',

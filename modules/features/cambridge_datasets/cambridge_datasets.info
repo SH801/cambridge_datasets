@@ -5,6 +5,7 @@ package = University of Cambridge
 version = 7.x-1.0
 dependencies[] = body_field_definition
 dependencies[] = ckeditor
+dependencies[] = ckeditor_link
 dependencies[] = entityreference
 dependencies[] = fe_block
 dependencies[] = field_collection_views

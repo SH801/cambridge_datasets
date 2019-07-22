@@ -34,12 +34,6 @@ function cambridge_datasets_default_fe_block_settings() {
         'theme' => 'seven',
         'weight' => 0,
       ),
-      'venture_theme' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'venture_theme',
-        'weight' => 0,
-      ),
     ),
     'title' => '',
     'visibility' => 0,

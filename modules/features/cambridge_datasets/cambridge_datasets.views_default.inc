@@ -993,7 +993,7 @@ function cambridge_datasets_views_default_views() {
 global $user;
 if (is_array($user->roles) && in_array(\'administrator\', $user->roles)) 
 {
-print \'<a href="node/\'.$row->nid.\'"><img align="middle" src="/profiles/cambridge/modules/features/cambridge_datasets/images/edit.png"></a>&nbsp;&nbsp;\';
+print \'<a href="node/\'.$row->nid.\'"><img align="middle" src="/profiles/cambridge_datasets_application/modules/features/cambridge_datasets/images/edit.png"></a>&nbsp;&nbsp;\';
 }
 else
 {
@@ -2266,7 +2266,7 @@ print $row->title;
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
   $handler->display->display_options['footer']['area']['content'] = '<div class="content campl-content-container">
-<a href="/cambridge_datasets/apply/[nid]"><button class="cambridge-dataset-apply-button" type="button">Apply for access to data</button></a>
+<a href="/cambridge_datasets/apply/[nid]"><button class="cambridge-datasets-apply-button" type="button">Apply for access to data</button></a>
 </div>';
   $handler->display->display_options['footer']['area']['format'] = 'full_html';
   $handler->display->display_options['footer']['area']['tokenize'] = TRUE;

@@ -23,10 +23,10 @@
 
     $(document).on("keypress", "#cambridge-datasets-dataset-search-input", function(event) {return event.keyCode != 13;});
     
-    // Count number of words in text box 'cambridge_dataset_word_count'
-    // and display in text box 'cambridge_dataset_display_count'
+    // Count number of words in text box 'cambridge_datasets_word_count'
+    // and display in text box 'cambridge_datasets_display_count'
 
-    $("#cambridge_dataset_word_count").on("keyup", function(event) 
+    $("#cambridge_datasets_word_count").on("keyup", function(event) 
     {
         var words = this.value.match(/\S+/g).length;
 
@@ -42,7 +42,7 @@
         }
         else 
         {
-            $("#cambridge_dataset_display_count").text(words);
+            $("#cambridge_datasets_display_count").text(words);
         }
     });      
 
