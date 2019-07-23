@@ -38,11 +38,23 @@ function cambridge_datasets_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'vertical_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'sidebar_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'focus_on_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'news_listing_item' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '4',
+          'weight' => '3',
         ),
         'title' => array(
           'weight' => '0',

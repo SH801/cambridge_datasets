@@ -53,7 +53,7 @@ function cambridge_datasets_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = '<h2>Mail</h2>
-<p>Set up <b>SMTP Settings</b> first, then click <b>Send test email</b> to send test email to site administrator (email entered during setup). To test your cron job by adding a test email to the mail queue, click <b>Add test email to queue</b>.</p>
+<p>Set up <b>SMTP Settings</b> first, then click <b>Send test email</b> to send test email to site administrator (email entered during setup). To test your mail queue cron job, click <b>Add test email to queue</b>.</p>
 <a href="#overlay=admin/config/system/smtp"><button type="button">SMTP Settings</button></a> <a href="cambridge_datasets/testemail"><button type="button">Send test email</button></a> <a href="cambridge_datasets/addtestmessagequeue"><button type="button">Add test email to queue</button></a>
 
 <h2>Users</h2>';
@@ -368,6 +368,7 @@ function cambridge_datasets_views_default_views() {
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
     5 => '5',
+    3 => '3',
     4 => '4',
   );
   $handler->display->display_options['cache']['type'] = 'none';
@@ -2088,7 +2089,7 @@ print $row->title;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
-    3 => '3',
+    5 => '5',
   );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -2243,7 +2244,7 @@ print $row->title;
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Data Collection Overview';
+  $handler->display->display_options['title'] = 'Dataset Collection Overview';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -2716,6 +2717,7 @@ print $extra_output;
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
     5 => '5',
+    3 => '3',
     4 => '4',
   );
   $handler->display->display_options['cache']['type'] = 'none';
