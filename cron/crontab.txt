@@ -1,0 +1,6 @@
+MAILTO=""
+# Every minute:
+* * * * * /home/user/cambridgedatasets/processmailqueue.sh
+
+# Every hour:
+0 * * * * /home/user/cambridgedatasets/processmailqueue.sh

@@ -105,6 +105,16 @@ function cambridge_datasets_menu()
 											'type' => MENU_NORMAL_ITEM,
 										];	  
 
+	$items['cambridge_datasets/addtestmessagequeue'] = 
+										[
+											'title' => 'Add test message to queue',
+											'description' => 'Add test message to queue.',
+											'access callback' => 'user_access',
+											'access arguments' => ['administer'],
+											'page callback' => 'cambridge_datasets_mail_messagequeue_addtest',
+											'type' => MENU_NORMAL_ITEM,
+										];	  
+
 	$items['admin/settings/cambridge_datasets'] = 	[
 											'title' => 'Cambridge Datasets Module Settings',
 											'description' => 'Settings for the Cambridge Datasets module',
@@ -500,6 +510,36 @@ function cambridge_datasets_mail_testemail()
 	{
 		drupal_set_message(t('There was a problem sending your test email', []), 'error');
 	}
+
+	drupal_goto('administration');	
+}
+
+function cambridge_datasets_mail_messagequeue_addtest()
+{
+	// Add test message to message queue in order to test cron job
+
+	$email = variable_get('site_mail', '');	
+	$content = 
+	[
+		'subject' => t('Test email sent via message queue'),
+		'body' => t('Congratulations! This test email sent through the message queue has been received successfully.'),
+	];	
+
+	// Create messagequeue object
+
+	$messagequeue_node = new stdClass();
+	$messagequeue_node->title = $content["subject"];
+	$messagequeue_node->type = "mail";
+	$messagequeue_node->language = LANGUAGE_NONE; // Or e.g. 'en' if locale is enabled
+	$messagequeue_node->uid = $GLOBALS["user"]->uid; 
+	$messagequeue_node->body[LANGUAGE_NONE][0]['format'] = 0;
+	$messagequeue_node->body[LANGUAGE_NONE][0]['value'] = $content['body'];
+	$messagequeue_node->field_user_email[LANGUAGE_NONE][0]['value'] = $email;
+	$messagequeue_node->field_mailtype[LANGUAGE_NONE][0]['value'] 	= 0;
+						
+	node_save($messagequeue_node); 		
+
+	drupal_set_message('Test email added to mail queue','alert');
 
 	drupal_goto('administration');	
 }

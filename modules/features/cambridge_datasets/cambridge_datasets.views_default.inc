@@ -53,8 +53,8 @@ function cambridge_datasets_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = '<h2>Mail</h2>
-<p>Set up <b>SMTP Settings</b> first, then click <b>Send test email</b> to send test email to site administrator (email entered during setup)</p>
-<a href="#overlay=admin/config/system/smtp"><button type="button">SMTP Settings</button></a> <a href="cambridge_datasets/testemail"><button type="button">Send test email</button></a>
+<p>Set up <b>SMTP Settings</b> first, then click <b>Send test email</b> to send test email to site administrator (email entered during setup). To test your cron job by adding a test email to the mail queue, click <b>Add test email to queue</b>.</p>
+<a href="#overlay=admin/config/system/smtp"><button type="button">SMTP Settings</button></a> <a href="cambridge_datasets/testemail"><button type="button">Send test email</button></a> <a href="cambridge_datasets/addtestmessagequeue"><button type="button">Add test email to queue</button></a>
 
 <h2>Users</h2>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
