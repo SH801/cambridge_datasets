@@ -2153,7 +2153,7 @@ print $row->title;
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = '<div class="content campl-content-container campl-no-bottom-padding">
-<a target="_new" href="/cambridge_dataset/processmessagequeue"><button type="button">Process message queue</button></a>
+<a target="_new" href="/cambridge_datasets/processmessagequeue"><button type="button">Process message queue</button></a>
 </div>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* Field: Content: Title */
