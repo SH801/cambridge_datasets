@@ -47,6 +47,16 @@ function cambridge_datasets_menu()
 											'type' => MENU_NORMAL_ITEM,
 										];	  
 
+	$items['cambridge_datasets/applicationrevert'] = [
+											'title' => 'Revert application',
+											'description' => 'Revert application.',
+											'access callback' => 'cambridge_datasets_user_has_role',
+											'access arguments' => ['finalreviewer', 'administrator'],
+											'page callback' => 'cambridge_datasets_applicationstatus_pagecallback',
+											'page arguments' => ['revert'],
+											'type' => MENU_NORMAL_ITEM,
+										];	  
+
 	$items['cambridge_datasets/applicationreject'] = [
 											'title' => 'Reject application',
 											'description' => 'Reject application.',
@@ -376,6 +386,7 @@ function cambridge_datasets_applicationstatus_pagecallback()
 		$saved_status = null;
 		switch($status)
 		{
+			case "revert": 		{$saved_status = "Submitted";break;}
 			case "approve": 	{$saved_status = "Approved";break;}
 			case "reject": 		{$saved_status = "Rejected";break;}
 			case "processed":	{$saved_status = "Processed";break;}

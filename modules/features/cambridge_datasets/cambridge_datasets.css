@@ -197,6 +197,7 @@ ul#cambridge-datasets-dataset-ul {
     padding-bottom:         20px;
 }
 
+button.cambridge-datasets-application-revert,
 button.cambridge-datasets-application-reject,
 button.cambridge-datasets-application-approve,
 button.cambridge-datasets-application-processed {
@@ -221,6 +222,13 @@ button.cambridge-datasets-application-processed {
     border:                 1px solid transparent;
     border-radius:          4px;
 }
+
+button.cambridge-datasets-application-revert {
+    color:                  black;
+    background-color:       #e9e9e9;
+    border-color:           #cacaca;
+    background-image:       linear-gradient(to bottom,#f5f4f4 0,#e6e6e6 100%);    
+}    
 
 button.cambridge-datasets-application-reject {
     background-color:       #d9534f;

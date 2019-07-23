@@ -69,11 +69,14 @@ function cambridge_datasets_views_default_views() {
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['label'] = 'User';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['name']['element_label_type'] = 'h2';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: User: Roles */
+  $handler->display->display_options['fields']['rid']['id'] = 'rid';
+  $handler->display->display_options['fields']['rid']['table'] = 'users_roles';
+  $handler->display->display_options['fields']['rid']['field'] = 'rid';
   /* Sort criterion: User: Created date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'users';
@@ -109,6 +112,7 @@ function cambridge_datasets_views_default_views() {
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
     5 => '5',
+    3 => '3',
   );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -632,7 +636,7 @@ function cambridge_datasets_views_default_views() {
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
-    3 => '3',
+    5 => '5',
   );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -1677,6 +1681,11 @@ print $row->title;
     'bypass_access' => 0,
     'link' => 0,
   );
+  /* Field: User: Roles */
+  $handler->display->display_options['fields']['rid']['id'] = 'rid';
+  $handler->display->display_options['fields']['rid']['table'] = 'users_roles';
+  $handler->display->display_options['fields']['rid']['field'] = 'rid';
+  $handler->display->display_options['fields']['rid']['relationship'] = 'field_reviewer_target_id';
   /* Field: Field collection item: Field collection item ID */
   $handler->display->display_options['fields']['item_id']['id'] = 'item_id';
   $handler->display->display_options['fields']['item_id']['table'] = 'field_collection_item';
@@ -2350,7 +2359,7 @@ print $row->title;
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
     5 => '5',
-    4 => '4',
+    3 => '3',
   );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -2412,7 +2421,7 @@ global $user;
 
 if (in_array(\'finalreviewer\', $user->roles) || in_array(\'administrator\', $user->roles))
 {
-print \'<div class="cambridge-datasets-finalreviewer-buttons"><a href="cambridge_datasets/applicationreject?application_nid=\'.$row->nid.\'"><button class="cambridge-datasets-application-reject" type="button">Reject</button></a> <a href="cambridge_datasets/applicationapprove?application_nid=\'.$row->nid.\'"><button class="cambridge-datasets-application-approve" type="button">Approve</button></a> <a href="cambridge_datasets/applicationprocessed?application_nid=\'.$row->nid.\'"><button class="cambridge-datasets-application-processed" type="button">Processed</button></a></div>\';
+print \'<div class="cambridge-datasets-finalreviewer-buttons"><a href="cambridge_datasets/applicationrevert?application_nid=\'.$row->nid.\'"><button class="cambridge-datasets-application-revert" type="button">Revert</button></a> <a href="cambridge_datasets/applicationreject?application_nid=\'.$row->nid.\'"><button class="cambridge-datasets-application-reject" type="button">Reject</button></a> <a href="cambridge_datasets/applicationapprove?application_nid=\'.$row->nid.\'"><button class="cambridge-datasets-application-approve" type="button">Approve</button></a> <a href="cambridge_datasets/applicationprocessed?application_nid=\'.$row->nid.\'"><button class="cambridge-datasets-application-processed" type="button">Processed</button></a></div>\';
 }
 
 ?>';
