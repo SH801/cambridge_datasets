@@ -90,8 +90,8 @@ function cambridge_datasets_menu()
 	$items['cambridge_datasets/import'] = [
 											'title' => 'Import Dataset Collection',
 											'description' => 'Import content from a <abbr title="Comma Separated Values">CSV</abbr> file.',
-											'access callback' => 'user_access',
-											'access arguments' => ['administer cambridge_datasets content'],
+											'access callback' => 'cambridge_datasets_user_has_role',
+											'access arguments' => ['administrator'],
 											'page callback' => 'cambridge_datasets_import_pagecallback',
 											'type' => MENU_NORMAL_ITEM,
 										];	  
@@ -109,8 +109,8 @@ function cambridge_datasets_menu()
 										[
 											'title' => 'Send test email',
 											'description' => 'Send test email.',
-											'access callback' => 'user_access',
-											'access arguments' => ['administer'],
+											'access callback' => 'cambridge_datasets_user_has_role',
+											'access arguments' => ['administrator'],
 											'page callback' => 'cambridge_datasets_mail_testemail',
 											'type' => MENU_NORMAL_ITEM,
 										];	  
@@ -119,8 +119,8 @@ function cambridge_datasets_menu()
 										[
 											'title' => 'Add test message to queue',
 											'description' => 'Add test message to queue.',
-											'access callback' => 'user_access',
-											'access arguments' => ['administer'],
+											'access callback' => 'cambridge_datasets_user_has_role',
+											'access arguments' => ['administrator'],
 											'page callback' => 'cambridge_datasets_mail_messagequeue_addtest',
 											'type' => MENU_NORMAL_ITEM,
 										];	  
