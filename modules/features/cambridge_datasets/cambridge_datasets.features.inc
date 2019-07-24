@@ -26,8 +26,8 @@ function cambridge_datasets_views_api($module = NULL, $api = NULL) {
  */
 function cambridge_datasets_node_info() {
   $items = array(
-    'application' => array(
-      'name' => t('Application'),
+    'request' => array(
+      'name' => t('Request'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',

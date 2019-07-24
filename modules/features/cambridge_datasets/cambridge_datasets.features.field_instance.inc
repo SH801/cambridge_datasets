@@ -215,9 +215,9 @@ function cambridge_datasets_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-application-body'.
-  $field_instances['node-application-body'] = array(
-    'bundle' => 'application',
+  // Exported field_instance: 'node-request-body'.
+  $field_instances['node-request-body'] = array(
+    'bundle' => 'request',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -295,9 +295,9 @@ function cambridge_datasets_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-application-field_collection'.
-  $field_instances['node-application-field_collection'] = array(
-    'bundle' => 'application',
+  // Exported field_instance: 'node-request-field_collection'.
+  $field_instances['node-request-field_collection'] = array(
+    'bundle' => 'request',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -375,9 +375,9 @@ function cambridge_datasets_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-application-field_datasets'.
-  $field_instances['node-application-field_datasets'] = array(
-    'bundle' => 'application',
+  // Exported field_instance: 'node-request-field_datasets'.
+  $field_instances['node-request-field_datasets'] = array(
+    'bundle' => 'request',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -457,9 +457,9 @@ function cambridge_datasets_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-application-field_reviewers'.
-  $field_instances['node-application-field_reviewers'] = array(
-    'bundle' => 'application',
+  // Exported field_instance: 'node-request-field_reviewers'.
+  $field_instances['node-request-field_reviewers'] = array(
+    'bundle' => 'request',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -539,9 +539,9 @@ function cambridge_datasets_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-application-field_reviews'.
-  $field_instances['node-application-field_reviews'] = array(
-    'bundle' => 'application',
+  // Exported field_instance: 'node-request-field_reviews'.
+  $field_instances['node-request-field_reviews'] = array(
+    'bundle' => 'request',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -621,9 +621,9 @@ function cambridge_datasets_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-application-field_status'.
-  $field_instances['node-application-field_status'] = array(
-    'bundle' => 'application',
+  // Exported field_instance: 'node-request-field_status'.
+  $field_instances['node-request-field_status'] = array(
+    'bundle' => 'request',
     'default_value' => array(
       0 => array(
         'value' => 'Submitted',
@@ -699,9 +699,9 @@ function cambridge_datasets_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-application-field_user_address'.
-  $field_instances['node-application-field_user_address'] = array(
-    'bundle' => 'application',
+  // Exported field_instance: 'node-request-field_user_address'.
+  $field_instances['node-request-field_user_address'] = array(
+    'bundle' => 'request',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -776,9 +776,9 @@ function cambridge_datasets_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-application-field_user_country'.
-  $field_instances['node-application-field_user_country'] = array(
-    'bundle' => 'application',
+  // Exported field_instance: 'node-request-field_user_country'.
+  $field_instances['node-request-field_user_country'] = array(
+    'bundle' => 'request',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -853,9 +853,9 @@ function cambridge_datasets_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-application-field_user_department'.
-  $field_instances['node-application-field_user_department'] = array(
-    'bundle' => 'application',
+  // Exported field_instance: 'node-request-field_user_department'.
+  $field_instances['node-request-field_user_department'] = array(
+    'bundle' => 'request',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -930,9 +930,9 @@ function cambridge_datasets_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-application-field_user_email'.
-  $field_instances['node-application-field_user_email'] = array(
-    'bundle' => 'application',
+  // Exported field_instance: 'node-request-field_user_email'.
+  $field_instances['node-request-field_user_email'] = array(
+    'bundle' => 'request',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -1007,9 +1007,9 @@ function cambridge_datasets_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-application-field_user_firstname'.
-  $field_instances['node-application-field_user_firstname'] = array(
-    'bundle' => 'application',
+  // Exported field_instance: 'node-request-field_user_firstname'.
+  $field_instances['node-request-field_user_firstname'] = array(
+    'bundle' => 'request',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -1084,9 +1084,9 @@ function cambridge_datasets_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-application-field_user_institution'.
-  $field_instances['node-application-field_user_institution'] = array(
-    'bundle' => 'application',
+  // Exported field_instance: 'node-request-field_user_institution'.
+  $field_instances['node-request-field_user_institution'] = array(
+    'bundle' => 'request',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -1161,9 +1161,9 @@ function cambridge_datasets_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-application-field_user_lastname'.
-  $field_instances['node-application-field_user_lastname'] = array(
-    'bundle' => 'application',
+  // Exported field_instance: 'node-request-field_user_lastname'.
+  $field_instances['node-request-field_user_lastname'] = array(
+    'bundle' => 'request',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -1238,9 +1238,9 @@ function cambridge_datasets_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-application-field_user_position'.
-  $field_instances['node-application-field_user_position'] = array(
-    'bundle' => 'application',
+  // Exported field_instance: 'node-request-field_user_position'.
+  $field_instances['node-request-field_user_position'] = array(
+    'bundle' => 'request',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -1315,9 +1315,9 @@ function cambridge_datasets_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-application-field_user_postcode'.
-  $field_instances['node-application-field_user_postcode'] = array(
-    'bundle' => 'application',
+  // Exported field_instance: 'node-request-field_user_postcode'.
+  $field_instances['node-request-field_user_postcode'] = array(
+    'bundle' => 'request',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -1392,9 +1392,9 @@ function cambridge_datasets_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-application-field_user_proposal'.
-  $field_instances['node-application-field_user_proposal'] = array(
-    'bundle' => 'application',
+  // Exported field_instance: 'node-request-field_user_proposal'.
+  $field_instances['node-request-field_user_proposal'] = array(
+    'bundle' => 'request',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -1469,9 +1469,9 @@ function cambridge_datasets_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-application-field_user_region'.
-  $field_instances['node-application-field_user_region'] = array(
-    'bundle' => 'application',
+  // Exported field_instance: 'node-request-field_user_region'.
+  $field_instances['node-request-field_user_region'] = array(
+    'bundle' => 'request',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -1628,12 +1628,12 @@ function cambridge_datasets_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-collection-field_content_application_predat'.
-  $field_instances['node-collection-field_content_application_predat'] = array(
+  // 'node-collection-field_content_request_predat'.
+  $field_instances['node-collection-field_content_request_predat'] = array(
     'bundle' => 'collection',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'The text on the main application form after the user input fields but before the list of datasets',
+    'description' => 'The text on the main request form after the user input fields but before the list of datasets',
     'display' => array(
       'carousel_item' => array(
         'label' => 'above',
@@ -1687,7 +1687,7 @@ function cambridge_datasets_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_content_application_predat',
+    'field_name' => 'field_content_request_predat',
     'label' => 'Text before list of datasets',
     'required' => 0,
     'settings' => array(
@@ -1706,12 +1706,12 @@ function cambridge_datasets_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-collection-field_content_application_prefac'.
-  $field_instances['node-collection-field_content_application_prefac'] = array(
+  // 'node-collection-field_content_request_prefac'.
+  $field_instances['node-collection-field_content_request_prefac'] = array(
     'bundle' => 'collection',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'The header text on the main application form before the user input fields',
+    'description' => 'The header text on the main request form before the user input fields',
     'display' => array(
       'carousel_item' => array(
         'label' => 'above',
@@ -1765,8 +1765,8 @@ function cambridge_datasets_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_content_application_prefac',
-    'label' => 'Text before main application form',
+    'field_name' => 'field_content_request_prefac',
+    'label' => 'Text before main request form',
     'required' => 0,
     'settings' => array(
       'text_processing' => 1,
@@ -2717,10 +2717,10 @@ function cambridge_datasets_field_default_field_instances() {
   t('Status');
   t('Terms & Conditions');
   t('Text before list of datasets');
-  t('Text before main application form');
+  t('Text before main request form');
   t('The Terms & Conditions the user must agree to before they can enter their user details and select their chosen datasets');
-  t('The header text on the main application form before the user input fields');
-  t('The text on the main application form after the user input fields but before the list of datasets');
+  t('The header text on the main request form before the user input fields');
+  t('The text on the main request form after the user input fields but before the list of datasets');
   t('Type');
 
   return $field_instances;

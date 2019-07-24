@@ -30,11 +30,11 @@ function cambridge_datasets_menu()
 											'type' => MENU_NORMAL_ITEM,
 										];	  
 
-	$items['cambridge_datasets/apply'] = [
-											'title' => 'Apply to use dataset',
-											'description' => 'Apply to use dataset.',
+	$items['cambridge_datasets/request'] = [
+											'title' => 'Request access to dataset',
+											'description' => 'Request access to dataset.',
 											'access callback' => TRUE,
-											'page callback' => 'cambridge_datasets_apply_pagecallback',
+											'page callback' => 'cambridge_datasets_request_pagecallback',
 											'type' => MENU_NORMAL_ITEM,
 										];	  
 
@@ -47,42 +47,42 @@ function cambridge_datasets_menu()
 											'type' => MENU_NORMAL_ITEM,
 										];	  
 
-	$items['cambridge_datasets/applicationrevert'] = [
-											'title' => 'Revert application',
-											'description' => 'Revert application.',
+	$items['cambridge_datasets/requestrevert'] = [
+											'title' => 'Revert request',
+											'description' => 'Revert request.',
 											'access callback' => 'cambridge_datasets_user_has_role',
 											'access arguments' => ['finalreviewer', 'administrator'],
-											'page callback' => 'cambridge_datasets_applicationstatus_pagecallback',
+											'page callback' => 'cambridge_datasets_requeststatus_pagecallback',
 											'page arguments' => ['revert'],
 											'type' => MENU_NORMAL_ITEM,
 										];	  
 
-	$items['cambridge_datasets/applicationreject'] = [
-											'title' => 'Reject application',
-											'description' => 'Reject application.',
+	$items['cambridge_datasets/requestreject'] = [
+											'title' => 'Reject request',
+											'description' => 'Reject request.',
 											'access callback' => 'cambridge_datasets_user_has_role',
 											'access arguments' => ['finalreviewer', 'administrator'],
-											'page callback' => 'cambridge_datasets_applicationstatus_pagecallback',
+											'page callback' => 'cambridge_datasets_requeststatus_pagecallback',
 											'page arguments' => ['reject'],
 											'type' => MENU_NORMAL_ITEM,
 										];	  
 
-	$items['cambridge_datasets/applicationapprove'] = [
-											'title' => 'Approve application',
-											'description' => 'Approve application.',
+	$items['cambridge_datasets/requestapprove'] = [
+											'title' => 'Approve request',
+											'description' => 'Approve request.',
 											'access callback' => 'cambridge_datasets_user_has_role',
 											'access arguments' => ['finalreviewer', 'administrator'],
-											'page callback' => 'cambridge_datasets_applicationstatus_pagecallback',
+											'page callback' => 'cambridge_datasets_requeststatus_pagecallback',
 											'page arguments' => ['approve'],
 											'type' => MENU_NORMAL_ITEM,
 										];	  
 
-	$items['cambridge_datasets/applicationprocessed'] = [
-											'title' => 'Application processed',
-											'description' => 'Application processed.',
+	$items['cambridge_datasets/requestprocessed'] = [
+											'title' => 'Request processed',
+											'description' => 'Request processed.',
 											'access callback' => 'cambridge_datasets_user_has_role',
 											'access arguments' => ['finalreviewer', 'administrator'],
-											'page callback' => 'cambridge_datasets_applicationstatus_pagecallback',
+											'page callback' => 'cambridge_datasets_requeststatus_pagecallback',
 											'page arguments' => ['processed'],
 											'type' => MENU_NORMAL_ITEM,
 										];	  
@@ -140,14 +140,14 @@ function cambridge_datasets_menu()
 function cambridge_datasets_user_login(&$edit, $account) 
 {
 	// Action to perform after user has logged in 
-	// If reviewer, redirect to 'applications' review page (pending applications)
+	// If reviewer, redirect to 'requests' review page (pending requests)
 	// Anyone else, go to home
 
 	$user = user_load($account->uid);
 
 	if (in_array('reviewer', $user->roles))
 	{
-		$edit['redirect'] = 'applications';
+		$edit['redirect'] = 'requests';
 	}
 	else
 	{
@@ -187,7 +187,7 @@ function cambridge_datasets_admin()
 													'#default_value' => variable_get('cambridge_datasets_datastore_path', ""),
 													'#size' => 100,
 													'#maxlength' => 1000,
-													'#description' => t("Path to a folder where data, eg. saved applications, will be stored"),
+													'#description' => t("Path to a folder where data, eg. saved requests, will be stored"),
 													'#required' => TRUE
 												];
 
@@ -246,7 +246,7 @@ function cambridge_datasets_default_pagecallback()
 	$module_path = drupal_get_path('module', 'cambridge_datasets');
 	$output = '<div class="campl-content-container"><h1>Welcome to the Cambridge University Dataset Portal</h1>
 	<p style="max-width:640px;">This system provides an overview of datasets within the University of Cambridge that are accessible to external researchers. 
-	You can apply to access any dataset by filling in a simple web form.</p>
+	You can request access to any dataset by filling in a simple web form.</p>
 	<p>In the event of problems, please email the site administrator at <a href="mailto:'.$email_contact.'">'.$email_contact.'</a><br/><br/></p>
 	<p><a href="collections"><button type="button">View Dataset Collections >></button></a></p>
 	';
@@ -255,11 +255,11 @@ function cambridge_datasets_default_pagecallback()
 	return $output;
 }
 
-function cambridge_datasets_apply_pagecallback() 
+function cambridge_datasets_request_pagecallback() 
 {
-	// Page for creating dataset application
+	// Page for creating dataset request
 
-	return drupal_get_form('cambridge_datasets_form_apply_terms');
+	return drupal_get_form('cambridge_datasets_form_request_terms');
 }
 
 function cambridge_datasets_import_pagecallback()
@@ -291,16 +291,16 @@ function cambridge_datasets_updatereview_pagecallback()
 
 	if ((!$reviewer) && (!$finalreviewer)) drupal_goto($_SERVER["HTTP_REFERER"]);
 
-	// Check whether user can comment on this application
+	// Check whether user can comment on this request
 
-	$application_nid = $_POST['application_nid'];
-	$application_node = node_load($application_nid);
-	if (!$application_node) drupal_goto($_SERVER["HTTP_REFERER"]);
+	$request_nid = $_POST['request_nid'];
+	$request_node = node_load($request_nid);
+	if (!$request_node) drupal_goto($_SERVER["HTTP_REFERER"]);
 
 	$reviewers_nids = [];
-	if (isset($application_node->field_reviewers[LANGUAGE_NONE]))
+	if (isset($request_node->field_reviewers[LANGUAGE_NONE]))
 	{
-		foreach($application_node->field_reviewers[LANGUAGE_NONE] as $key => $value)
+		foreach($request_node->field_reviewers[LANGUAGE_NONE] as $key => $value)
 		{
 			$field_collection_node = entity_load('field_collection_item', array($value['value']));
 			$field_collection_node = array_shift($field_collection_node);
@@ -312,7 +312,7 @@ function cambridge_datasets_updatereview_pagecallback()
 
 	// User has sufficient access, delete their existing comment if any
 
-	$reviews = field_get_items('node', $application_node, 'field_reviews');
+	$reviews = field_get_items('node', $request_node, 'field_reviews');
 	if ($reviews) 
 	{
 		foreach($reviews as $review)
@@ -330,20 +330,20 @@ function cambridge_datasets_updatereview_pagecallback()
 	$decision = $_POST['decision'];
 	$comment = $_POST['comment'];
 	$field_collection_item = entity_create('field_collection_item', array('field_name' => 'field_reviews')); 
-	$field_collection_item->setHostEntity('node', $application_node); 
+	$field_collection_item->setHostEntity('node', $request_node); 
 	$field_collection_item->field_decision[LANGUAGE_NONE][0]['value'] = $decision; 
 	$field_collection_item->field_comment[LANGUAGE_NONE][0]['value'] = $comment; 
 	$field_collection_item->field_reviewer[LANGUAGE_NONE][0]['target_id'] = $user->uid; 
 	$field_collection_item->save(TRUE); 
 
-	node_save($application_node); 	
+	node_save($request_node); 	
 
 	drupal_goto($_SERVER["HTTP_REFERER"]);
 }
 
-function cambridge_datasets_applicationstatus_pagecallback()
+function cambridge_datasets_requeststatus_pagecallback()
 {
-	// Modifies status of 'application' object
+	// Modifies status of 'request' object
 
 	// Status at which we enable access
 
@@ -352,7 +352,7 @@ function cambridge_datasets_applicationstatus_pagecallback()
 	global $user;
 	$finalreviewer = false;
 
-	// Check whether user has sufficient role to change status of application
+	// Check whether user has sufficient role to change status of request
 
 	if (in_array('finalreviewer', $user->roles)) $finalreviewer = true;
 	if (in_array('administrator', $user->roles)) $finalreviewer = true;
@@ -360,20 +360,20 @@ function cambridge_datasets_applicationstatus_pagecallback()
 	if (!$finalreviewer) drupal_goto($_SERVER["HTTP_REFERER"]);
 
 	$status = func_get_args();
-	if (isset($_GET['application_nid']))
+	if (isset($_GET['request_nid']))
 	{
 		$status = $status[0];
-		$application_nid = $_GET['application_nid'];
-		$application_node = node_load($application_nid);
+		$request_nid = $_GET['request_nid'];
+		$request_node = node_load($request_nid);
 
-		// Check whether user can review this application
+		// Check whether user can review this request
 
-		if (!$application_node) drupal_goto($_SERVER["HTTP_REFERER"]);
+		if (!$request_node) drupal_goto($_SERVER["HTTP_REFERER"]);
 
 		$reviewers_nids = [];
-		if (isset($application_node->field_reviewers[LANGUAGE_NONE]))
+		if (isset($request_node->field_reviewers[LANGUAGE_NONE]))
 		{
-			foreach($application_node->field_reviewers[LANGUAGE_NONE] as $key => $value)
+			foreach($request_node->field_reviewers[LANGUAGE_NONE] as $key => $value)
 			{
 				$field_collection_node = entity_load('field_collection_item', array($value['value']));
 				$field_collection_node = array_shift($field_collection_node);
@@ -392,12 +392,12 @@ function cambridge_datasets_applicationstatus_pagecallback()
 			case "processed":	{$saved_status = "Processed";break;}
 		}
 
-		if ($status == $enableaccess_status) cambridge_datasets_enableaccess_application($application_nid);
+		if ($status == $enableaccess_status) cambridge_datasets_enableaccess_request($request_nid);
 
 		if ($saved_status)
 		{
-			$application_node->field_status[LANGUAGE_NONE][0]['value'] = $saved_status;
-			node_save($application_node);	
+			$request_node->field_status[LANGUAGE_NONE][0]['value'] = $saved_status;
+			node_save($request_node);	
 		}
 
 		drupal_goto($_SERVER["HTTP_REFERER"]);
@@ -412,7 +412,7 @@ function cambridge_datasets_applicationstatus_pagecallback()
 //  Dataset-specific functions
 //-------------------------------------------------------------------------------------------|
 
-function cambridge_datasets_enableaccess_application($application_nid)
+function cambridge_datasets_enableaccess_request($request_nid)
 {
 	// Enable access to dataset(s) for applicant
 
@@ -424,12 +424,12 @@ function cambridge_datasets_enableaccess_application($application_nid)
 
 	// Enable actual access to each dataset
 
-	$application_node = node_load($application_nid);
+	$request_node = node_load($request_nid);
 
-	if (isset($application_node->field_datasets[LANGUAGE_NONE]))
+	if (isset($request_node->field_datasets[LANGUAGE_NONE]))
 	{
 		$field_collection_nids = $datasets_nids = [];
-		foreach($application_node->field_datasets[LANGUAGE_NONE] as $key => $field_collection_nid_array)
+		foreach($request_node->field_datasets[LANGUAGE_NONE] as $key => $field_collection_nid_array)
 		{
 			$field_collection_nids[] = $field_collection_nid_array['value'];
 		} 
@@ -449,7 +449,7 @@ function cambridge_datasets_enableaccess_application($application_nid)
 
 	// Send notification email to applicant
 
-	cambridge_datasets_enableaccess_emailapplicant_confirm($application_nid, $username, $password);		
+	cambridge_datasets_enableaccess_emailapplicant_confirm($request_nid, $username, $password);		
 }
 
 function cambridge_datasets_enableaccess_dataset($dataset, $user_id = null, $username = '', $password = '')
@@ -469,12 +469,12 @@ function cambridge_datasets_enableaccess_dataset($dataset, $user_id = null, $use
 	// ***************************************************	
 }
 
-function cambridge_datasets_enableaccess_emailapplicant_confirm($application_nid, $username = '', $password = '')
+function cambridge_datasets_enableaccess_emailapplicant_confirm($request_nid, $username = '', $password = '')
 {
-	$application_node = node_load($application_nid);
-	$firstname = $application_node->field_user_firstname[LANGUAGE_NONE][0]['value'];
-	$lastname = $application_node->field_user_lastname[LANGUAGE_NONE][0]['value'];
-	$email = $application_node->field_user_email[LANGUAGE_NONE][0]['value'];
+	$request_node = node_load($request_nid);
+	$firstname = $request_node->field_user_firstname[LANGUAGE_NONE][0]['value'];
+	$lastname = $request_node->field_user_lastname[LANGUAGE_NONE][0]['value'];
+	$email = $request_node->field_user_email[LANGUAGE_NONE][0]['value'];
 	$fullname = trim("$firstname $lastname");
 
 	$content = 
@@ -684,18 +684,18 @@ function cambridge_datasets_mail($key, &$message, $params)
 
 //-------------------------------------------------------------------------------------------|
 //-------------------------------------------------------------------------------------------|
-//  Form builder, validate, and submit functions for apply form
+//  Form builder, validate, and submit functions for request form
 //-------------------------------------------------------------------------------------------|
 //-------------------------------------------------------------------------------------------|
 
-function cambridge_datasets_form_apply_terms($form, &$form_state) 
+function cambridge_datasets_form_request_terms($form, &$form_state) 
 {
-	// Create 'terms' web form of apply process or redirect 
-	// to 'application' web form if terms have been accepted
+	// Create 'terms' web form of request process or redirect 
+	// to 'request' web form if terms have been accepted
 
 	if (isset($form_state['storage']['page_two'])) 
 	{
-		return cambridge_datasets_form_apply_application($form_state);
+		return cambridge_datasets_form_request_request($form_state);
 	}
 
 	$path_args = explode('/', current_path());
@@ -733,9 +733,9 @@ function cambridge_datasets_form_apply_terms($form, &$form_state)
 	return $form;
 }
 
-function cambridge_datasets_form_apply_application(&$form_state) 
+function cambridge_datasets_form_request_request(&$form_state) 
 {
-	// Create 'application' web form of apply process
+	// Create 'request' web form of request process
 
 	$form_datasets = '';
 
@@ -763,8 +763,8 @@ function cambridge_datasets_form_apply_application(&$form_state)
 	$nid = $form_state['storage']['nodeid'];	
 	$node = node_load($nid);
 	$node_preface = $node_predata = "";
-	if (isset($node->field_content_application_prefac[LANGUAGE_NONE])) $node_preface = $node->field_content_application_prefac[LANGUAGE_NONE][0]['value'];
-	if (isset($node->field_content_application_predat[LANGUAGE_NONE]))	$node_predata = $node->field_content_application_predat[LANGUAGE_NONE][0]['value'];
+	if (isset($node->field_content_request_prefac[LANGUAGE_NONE])) $node_preface = $node->field_content_request_prefac[LANGUAGE_NONE][0]['value'];
+	if (isset($node->field_content_request_predat[LANGUAGE_NONE]))	$node_predata = $node->field_content_request_predat[LANGUAGE_NONE][0]['value'];
 	
 	$form['mymarkup'] = 	[
 								'#type' => 'markup',
@@ -772,7 +772,7 @@ function cambridge_datasets_form_apply_application(&$form_state)
 							];
 
 	$form['first'] = 		[
-								'#prefix' => '<div class="form-apply">',
+								'#prefix' => '<div class="form-request">',
 								'#suffix' => '</div>',
 								'#type' => 'textfield',
 								'#title' => t('First Name'),
@@ -783,7 +783,7 @@ function cambridge_datasets_form_apply_application(&$form_state)
 							];
 
 	$form['last'] = 		[
-								'#prefix' => '<div class="form-apply">',
+								'#prefix' => '<div class="form-request">',
 								'#suffix' => '</div>',
 								'#type' => 'textfield',
 								'#title' => t('Last Name'),
@@ -794,7 +794,7 @@ function cambridge_datasets_form_apply_application(&$form_state)
 							];
 
 	$form['email'] = 		[
-								'#prefix' => '<div class="form-apply">',
+								'#prefix' => '<div class="form-request">',
 								'#suffix' => '</div>',
 								'#type' => 'textfield',
 								'#title' => t('Email'),
@@ -805,7 +805,7 @@ function cambridge_datasets_form_apply_application(&$form_state)
 							];
 
 	$form['position'] = 	[
-								'#prefix' => '<div class="form-apply">',
+								'#prefix' => '<div class="form-request">',
 								'#suffix' => '</div>',
 								'#type' => 'textfield',
 								'#title' => t('Academic Position'),
@@ -816,7 +816,7 @@ function cambridge_datasets_form_apply_application(&$form_state)
 							];
 
 	$form['institution'] =	[
-								'#prefix' => '<div class="form-apply">',
+								'#prefix' => '<div class="form-request">',
 								'#suffix' => '</div>',
 								'#type' => 'textfield',
 								'#title' => t('Institution'),
@@ -827,7 +827,7 @@ function cambridge_datasets_form_apply_application(&$form_state)
 							];
 
 	$form['department'] = 	[
-								'#prefix' => '<div class="form-apply">',
+								'#prefix' => '<div class="form-request">',
 								'#suffix' => '</div>',
 								'#type' => 'textfield',
 								'#title' => t('Department'),
@@ -838,7 +838,7 @@ function cambridge_datasets_form_apply_application(&$form_state)
 							];
 
 	$form['address'] = 		[
-								'#prefix' => '<div class="form-apply">',
+								'#prefix' => '<div class="form-request">',
 								'#suffix' => '</div>',
 								'#type' => 'textarea',
 								'#title' => t('Address<br><small>Building number/name, street, town</small>'),
@@ -850,7 +850,7 @@ function cambridge_datasets_form_apply_application(&$form_state)
 							];
 
 	$form['region'] = 		[
-								'#prefix' => '<div class="form-apply">',
+								'#prefix' => '<div class="form-request">',
 								'#suffix' => '</div>',
 								'#type' => 'textfield',
 								'#title' => t('Region'),
@@ -861,7 +861,7 @@ function cambridge_datasets_form_apply_application(&$form_state)
 							];
 
 	$form['postcode'] = 	[
-								'#prefix' => '<div class="form-apply">',
+								'#prefix' => '<div class="form-request">',
 								'#suffix' => '</div>',
 								'#type' => 'textfield',
 								'#title' => t('Postcode/Zip'),
@@ -881,7 +881,7 @@ function cambridge_datasets_form_apply_application(&$form_state)
 	// 						];
 
 	$form['country'] = 		[
-								'#prefix' => '<div class="form-apply">',
+								'#prefix' => '<div class="form-request">',
 								'#suffix' => '</div>',
 								'#type' => 'select',
 								'#title' => t('Country'),
@@ -896,7 +896,7 @@ function cambridge_datasets_form_apply_application(&$form_state)
 							];
 
 	$form['proposal'] = 	[
-								'#prefix' => '<div class="form-apply">',
+								'#prefix' => '<div class="form-request">',
 								'#suffix' => '</div>',
 								'#type' => 'textarea',
 								'#title' => t(''),
@@ -986,9 +986,9 @@ $extrahtml = '
 	return $form;
 }
 
-function cambridge_datasets_form_apply_terms_validate($form, &$form_state) 
+function cambridge_datasets_form_request_terms_validate($form, &$form_state) 
 {
-	// Validate 'apply' web form
+	// Validate 'request' web form
 
 	if (isset($form_state['storage']['page_two'])) 
 	{
@@ -1013,13 +1013,13 @@ function cambridge_datasets_form_apply_terms_validate($form, &$form_state)
 
 	if ($form_state['values']['agree']['agree'] !== 'agree')
 	{
-		form_set_error('agree', t('You must agree to the terms and conditions before you can make an application', []));
+		form_set_error('agree', t('You must agree to the terms and conditions before you can make a request', []));
 	}
 }
 
-function cambridge_datasets_form_apply_terms_submit($form, &$form_state) 
+function cambridge_datasets_form_request_terms_submit($form, &$form_state) 
 {
-	// Process content of 'apply' web form that contains user's application
+	// Process content of 'request' web form that contains user's request
 
 	if ($form_state['clicked_button']['#id'] == 'edit-next') 
 	{
@@ -1046,8 +1046,8 @@ function cambridge_datasets_form_apply_terms_submit($form, &$form_state)
 
 		// Save data in case anything goes wrong with creating object in Drupal
 
-		$datastore_application_folder_path = rtrim(variable_get('cambridge_datasets_datastore_path', ""), '/')."/applications";
-		file_prepare_directory($datastore_application_folder_path, FILE_CREATE_DIRECTORY);
+		$datastore_request_folder_path = rtrim(variable_get('cambridge_datasets_datastore_path', ""), '/')."/requests";
+		file_prepare_directory($datastore_request_folder_path, FILE_CREATE_DIRECTORY);
 
 		$datastore_legacy_array = [];
 		$datastore_legacy_array['firstname'] = $field_first;
@@ -1064,39 +1064,39 @@ function cambridge_datasets_form_apply_terms_submit($form, &$form_state)
 		$datastore_legacy_array['requested_data'] = $field_datasets;
 
 		$json = json_encode($datastore_legacy_array);
-		$datastore_application_file_name = $field_first.'_'.'@£$%^^   *(&^%$£'.$field_last.'_'.date("F_j_Y_g_i_a").'.json';
-		$datastore_application_file_name = preg_replace('/[^A-Za-z_0-9\.\:]/', '', $datastore_application_file_name); // remove weird characters
-		$datastore_application_file_name = preg_replace('/[\s]/', '', $datastore_application_file_name); // remove spaces
-		$datastore_application_file_path = $datastore_application_folder_path.'/'.$datastore_application_file_name;
+		$datastore_request_file_name = $field_first.'_'.'@£$%^^   *(&^%$£'.$field_last.'_'.date("F_j_Y_g_i_a").'.json';
+		$datastore_request_file_name = preg_replace('/[^A-Za-z_0-9\.\:]/', '', $datastore_request_file_name); // remove weird characters
+		$datastore_request_file_name = preg_replace('/[\s]/', '', $datastore_request_file_name); // remove spaces
+		$datastore_request_file_path = $datastore_request_folder_path.'/'.$datastore_request_file_name;
 
-		file_put_contents($datastore_application_file_path , $json);
+		file_put_contents($datastore_request_file_path , $json);
 
-		// Set up 'application' object
+		// Set up 'request' object
 
-		$application_node = new stdClass();
-		$application_node->title = "Application from ".substr("$field_first $field_last", 0, 100)." [".date("Y-m-d H:i:s")."]";
-		$application_node->type = "application";
-		$application_node->language = LANGUAGE_NONE; // Or e.g. 'en' if locale is enabled
-		$application_node->uid = $GLOBALS["user"]->uid; 
-		$application_node->field_collection[LANGUAGE_NONE][]['target_id'] 		= $collection_nid;
-		$application_node->field_user_firstname[LANGUAGE_NONE][0]['value'] 		= $field_first;
-		$application_node->field_user_lastname[LANGUAGE_NONE][0]['value'] 		= $field_last;
-		$application_node->field_user_email[LANGUAGE_NONE][0]['value'] 			= $field_email;
-		$application_node->field_user_position[LANGUAGE_NONE][0]['value'] 		= $field_position;
-		$application_node->field_user_institution[LANGUAGE_NONE][0]['value'] 	= $field_institution;
-		$application_node->field_user_department[LANGUAGE_NONE][0]['value'] 	= $field_department;
-		$application_node->field_user_address[LANGUAGE_NONE][0]['value'] 		= $field_address;
-		$application_node->field_user_region[LANGUAGE_NONE][0]['value'] 		= $field_region;
-		$application_node->field_user_postcode[LANGUAGE_NONE][0]['value'] 		= $field_postcode;
-		$application_node->field_user_country[LANGUAGE_NONE][0]['value'] 		= $field_country;
-		$application_node->field_user_proposal[LANGUAGE_NONE][0]['value'] 		= $field_proposal;
+		$request_node = new stdClass();
+		$request_node->title = "Request from ".substr("$field_first $field_last", 0, 100)." [".date("Y-m-d H:i:s")."]";
+		$request_node->type = "request";
+		$request_node->language = LANGUAGE_NONE; // Or e.g. 'en' if locale is enabled
+		$request_node->uid = $GLOBALS["user"]->uid; 
+		$request_node->field_collection[LANGUAGE_NONE][]['target_id'] 		= $collection_nid;
+		$request_node->field_user_firstname[LANGUAGE_NONE][0]['value'] 		= $field_first;
+		$request_node->field_user_lastname[LANGUAGE_NONE][0]['value'] 		= $field_last;
+		$request_node->field_user_email[LANGUAGE_NONE][0]['value'] 			= $field_email;
+		$request_node->field_user_position[LANGUAGE_NONE][0]['value'] 		= $field_position;
+		$request_node->field_user_institution[LANGUAGE_NONE][0]['value'] 	= $field_institution;
+		$request_node->field_user_department[LANGUAGE_NONE][0]['value'] 	= $field_department;
+		$request_node->field_user_address[LANGUAGE_NONE][0]['value'] 		= $field_address;
+		$request_node->field_user_region[LANGUAGE_NONE][0]['value'] 		= $field_region;
+		$request_node->field_user_postcode[LANGUAGE_NONE][0]['value'] 		= $field_postcode;
+		$request_node->field_user_country[LANGUAGE_NONE][0]['value'] 		= $field_country;
+		$request_node->field_user_proposal[LANGUAGE_NONE][0]['value'] 		= $field_proposal;
 	
 		// Add reviewers for particular collection of datasets
 
 		$collection_node = node_load($collection_nid);
 		if (isset($collection_node->field_reviewers[LANGUAGE_NONE]))
 		{
-			$application_node->field_reviewers[LANGUAGE_NONE] = $collection_node->field_reviewers[LANGUAGE_NONE];
+			$request_node->field_reviewers[LANGUAGE_NONE] = $collection_node->field_reviewers[LANGUAGE_NONE];
 
 			$reviewers_nids = [];
 			foreach($collection_node->field_reviewers[LANGUAGE_NONE] as $key => $value)
@@ -1109,7 +1109,7 @@ function cambridge_datasets_form_apply_terms_submit($form, &$form_state)
 			cambridge_datasets_mail_notifyreviewers($reviewers_nids);
 		}
 
-		// Add selected datasets to application
+		// Add selected datasets to request
 
 		$selecteddatasets_dupe_array = explode(",", $field_datasets);
 		$selecteddatasets_array = [];
@@ -1135,7 +1135,7 @@ function cambridge_datasets_form_apply_terms_submit($form, &$form_state)
 				if (in_array($value->field_code[LANGUAGE_NONE][0]['value'], $selecteddatasets_array))
 				{
 					$field_collection_item = entity_create('field_collection_item', array('field_name' => 'field_datasets')); 
-					$field_collection_item->setHostEntity('node', $application_node); 
+					$field_collection_item->setHostEntity('node', $request_node); 
 					$field_collection_item->field_dataset[LANGUAGE_NONE][0]['target_id'] = $value->nid; 
 					$field_collection_item->save(TRUE); 
 				}
@@ -1144,18 +1144,18 @@ function cambridge_datasets_form_apply_terms_submit($form, &$form_state)
 
 		// Save node
 
-		node_save($application_node); 	
+		node_save($request_node); 	
 
 		// Give feedback to user and redirect to home page
 
-		drupal_set_message('Your application has been sent!');
+		drupal_set_message('Your request has been sent!');
 		$form_state['redirect'] = 'cambridge_datasets'; 
 	}
 }
 
 //-------------------------------------------------------------------------------------------|
 //-------------------------------------------------------------------------------------------|
-//  End Form builder, validate, and submit functions for apply form
+//  End Form builder, validate, and submit functions for request form
 //-------------------------------------------------------------------------------------------|
 //-------------------------------------------------------------------------------------------|
 

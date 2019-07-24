@@ -86,13 +86,13 @@ function cambridge_datasets_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_content_application_predat'.
-  $field_bases['field_content_application_predat'] = array(
+  // Exported field_base: 'field_content_request_predat'.
+  $field_bases['field_content_request_predat'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_content_application_predat',
+    'field_name' => 'field_content_request_predat',
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -105,13 +105,13 @@ function cambridge_datasets_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_content_application_prefac'.
-  $field_bases['field_content_application_prefac'] = array(
+  // Exported field_base: 'field_content_request_prefac'.
+  $field_bases['field_content_request_prefac'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_content_application_prefac',
+    'field_name' => 'field_content_request_prefac',
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -287,7 +287,7 @@ function cambridge_datasets_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => 'Specific message',
-        1 => 'Application received notification',
+        1 => 'Request received notification',
       ),
       'allowed_values_function' => '',
     ),

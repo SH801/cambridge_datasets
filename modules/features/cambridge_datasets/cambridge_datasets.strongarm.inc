@@ -14,7 +14,7 @@ function cambridge_datasets_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'field_bundle_settings_node__application';
+  $strongarm->name = 'field_bundle_settings_node__request';
   $strongarm->value = array(
     'view_modes' => array(
       'full' => array(
@@ -69,7 +69,7 @@ function cambridge_datasets_strongarm() {
       'display' => array(),
     ),
   );
-  $export['field_bundle_settings_node__application'] = $strongarm;
+  $export['field_bundle_settings_node__request'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -230,11 +230,11 @@ function cambridge_datasets_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_options_application';
+  $strongarm->name = 'menu_options_request';
   $strongarm->value = array(
     0 => 'main-menu',
   );
-  $export['menu_options_application'] = $strongarm;
+  $export['menu_options_request'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -266,9 +266,9 @@ function cambridge_datasets_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_parent_application';
+  $strongarm->name = 'menu_parent_request';
   $strongarm->value = 'main-menu:0';
-  $export['menu_parent_application'] = $strongarm;
+  $export['menu_parent_request'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -294,12 +294,12 @@ function cambridge_datasets_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_options_application';
+  $strongarm->name = 'node_options_request';
   $strongarm->value = array(
     0 => 'status',
     1 => 'promote',
   );
-  $export['node_options_application'] = $strongarm;
+  $export['node_options_request'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -334,9 +334,9 @@ function cambridge_datasets_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_preview_application';
+  $strongarm->name = 'node_preview_request';
   $strongarm->value = '1';
-  $export['node_preview_application'] = $strongarm;
+  $export['node_preview_request'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -362,9 +362,9 @@ function cambridge_datasets_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_application';
+  $strongarm->name = 'node_submitted_request';
   $strongarm->value = 0;
-  $export['node_submitted_application'] = $strongarm;
+  $export['node_submitted_request'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

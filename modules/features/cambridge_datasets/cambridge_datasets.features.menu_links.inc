@@ -31,17 +31,17 @@ function cambridge_datasets_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_all-applications:applications_all.
-  $menu_links['main-menu_all-applications:applications_all'] = array(
+  // Exported menu link: main-menu_all-requests:requests_all.
+  $menu_links['main-menu_all-requests:requests_all'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'applications_all',
-    'router_path' => 'applications_all',
-    'link_title' => 'All Applications',
+    'link_path' => 'requests_all',
+    'router_path' => 'requests_all',
+    'link_title' => 'All Requests',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_all-applications:applications_all',
+      'identifier' => 'main-menu_all-requests:requests_all',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -71,17 +71,17 @@ function cambridge_datasets_menu_default_menu_links() {
     'weight' => -48,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_edit-applications:applications_admin.
-  $menu_links['main-menu_edit-applications:applications_admin'] = array(
+  // Exported menu link: main-menu_edit-requests:requests_admin.
+  $menu_links['main-menu_edit-requests:requests_admin'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'applications_admin',
-    'router_path' => 'applications_admin',
-    'link_title' => 'Edit Applications',
+    'link_path' => 'requests_admin',
+    'router_path' => 'requests_admin',
+    'link_title' => 'Edit Requests',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_edit-applications:applications_admin',
+      'identifier' => 'main-menu_edit-requests:requests_admin',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -148,17 +148,17 @@ function cambridge_datasets_menu_default_menu_links() {
     'weight' => -44,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_pending-applications:applications.
-  $menu_links['main-menu_pending-applications:applications'] = array(
+  // Exported menu link: main-menu_pending-requests:requests.
+  $menu_links['main-menu_pending-requests:requests'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'applications',
-    'router_path' => 'applications',
-    'link_title' => 'Pending Applications',
+    'link_path' => 'requests',
+    'router_path' => 'requests',
+    'link_title' => 'Pending Requests',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_pending-applications:applications',
+      'identifier' => 'main-menu_pending-requests:requests',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -172,13 +172,13 @@ function cambridge_datasets_menu_default_menu_links() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Admin');
-  t('All Applications');
+  t('All Requests');
   t('Dataset Collections');
-  t('Edit Applications');
+  t('Edit Requests');
   t('Events');
   t('Import Collection');
   t('Mail Queue');
-  t('Pending Applications');
+  t('Pending Requests');
 
   return $menu_links;
 }

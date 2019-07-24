@@ -65,7 +65,7 @@ input[type="color"],
 
 /* Make form into two columns with labels aligned right */
 
-.form-apply label {
+.form-request label {
     width:                  200px;
     float:                  left;
     text-align:             right;
@@ -120,7 +120,7 @@ input[type="color"],
 
 /* Apply button on collection overview page */
 
-.cambridge-datasets-apply-button {
+.cambridge-datasets-request-button {
     padding:                12px;
     font-size:              1.2em;
     width:                  100%;
@@ -197,10 +197,10 @@ ul#cambridge-datasets-dataset-ul {
     padding-bottom:         20px;
 }
 
-button.cambridge-datasets-application-revert,
-button.cambridge-datasets-application-reject,
-button.cambridge-datasets-application-approve,
-button.cambridge-datasets-application-processed {
+button.cambridge-datasets-request-revert,
+button.cambridge-datasets-request-reject,
+button.cambridge-datasets-request-approve,
+button.cambridge-datasets-request-processed {
     color:                  white;
     box-shadow:             inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
     padding:                6px 12px;
@@ -223,26 +223,26 @@ button.cambridge-datasets-application-processed {
     border-radius:          4px;
 }
 
-button.cambridge-datasets-application-revert {
+button.cambridge-datasets-request-revert {
     color:                  black;
     background-color:       #e9e9e9;
     border-color:           #cacaca;
     background-image:       linear-gradient(to bottom,#f5f4f4 0,#e6e6e6 100%);    
 }    
 
-button.cambridge-datasets-application-reject {
+button.cambridge-datasets-request-reject {
     background-color:       #d9534f;
     border-color:           #b92c28;
     background-image:       linear-gradient(to bottom,#d9534f 0,#c12e2a 100%);
 }    
 
-button.cambridge-datasets-application-approve {
+button.cambridge-datasets-request-approve {
     background-color:       #5cb85c;
     border-color:           #3e8f3e;
     background-image:       linear-gradient(to bottom,#5cb85c 0,#419641 100%);
 }    
 
-button.cambridge-datasets-application-processed {
+button.cambridge-datasets-request-processed {
     background-color:       #5bc0de;
     border-color:           #28a4c9;
     background-image:       linear-gradient(to bottom,#5bc0de 0,#2aabd2 100%);

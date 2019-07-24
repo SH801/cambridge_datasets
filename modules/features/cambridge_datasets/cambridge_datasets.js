@@ -6,7 +6,7 @@
 // -----------------------------------------------------------
 // -----------------------------------------------------------
 // ------ Functions are used to provide word counter and -----
-// - interactive selection of datasets within application form
+// -- interactive selection of datasets within request form --
 // -----------------------------------------------------------
 // ***********************************************************
 

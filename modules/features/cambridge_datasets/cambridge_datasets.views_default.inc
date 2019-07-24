@@ -96,18 +96,18 @@ function cambridge_datasets_views_default_views() {
   $export['administration'] = $view;
 
   $view = new view();
-  $view->name = 'all_applications';
+  $view->name = 'all_requests';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'All Applications';
+  $view->human_name = 'All Requests';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'All Applications';
+  $handler->display->display_options['title'] = 'All Requests';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
@@ -204,7 +204,7 @@ function cambridge_datasets_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<div class="campl-content-container">All applications that you have access to are shown below</div>';
+  $handler->display->display_options['header']['area']['content'] = '<div class="campl-content-container">All requests that you have access to are shown below</div>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -212,7 +212,7 @@ function cambridge_datasets_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<div class="campl-content-container">
-<h2><i>No applications</i></h2>
+<h2><i>No requests</i></h2>
 </div>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Relationship: Content: Reviewers (field_reviewers) */
@@ -240,7 +240,7 @@ function cambridge_datasets_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['text'] = '[title]';
   $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['path'] = 'reviewallapplications/?page=[counter]';
+  $handler->display->display_options['fields']['title']['alter']['path'] = 'reviewallrequests/?page=[counter]';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
@@ -347,27 +347,27 @@ function cambridge_datasets_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'application' => 'application',
+    'request' => 'request',
   );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'applications_all';
-  $export['all_applications'] = $view;
+  $handler->display->display_options['path'] = 'requests_all';
+  $export['all_requests'] = $view;
 
   $view = new view();
-  $view->name = 'applications';
+  $view->name = 'requests';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Pending Applications';
+  $view->human_name = 'Pending Requests';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Pending Applications';
+  $handler->display->display_options['title'] = 'Pending Requests';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
@@ -473,7 +473,7 @@ function cambridge_datasets_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<div class="campl-content-container">
-<h2><i>No pending applications</i></h2>
+<h2><i>No pending requests</i></h2>
 </div>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Relationship: Content: Reviewers (field_reviewers) */
@@ -501,7 +501,7 @@ function cambridge_datasets_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['text'] = '[title]';
   $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['path'] = 'reviewapplications/?page=[counter]';
+  $handler->display->display_options['fields']['title']['alter']['path'] = 'reviewrequests/?page=[counter]';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
@@ -604,7 +604,7 @@ function cambridge_datasets_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'application' => 'application',
+    'request' => 'request',
   );
   /* Filter criterion: Content: Status (field_status) */
   $handler->display->display_options['filters']['field_status_value']['id'] = 'field_status_value';
@@ -616,22 +616,22 @@ function cambridge_datasets_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'applications';
-  $export['applications'] = $view;
+  $handler->display->display_options['path'] = 'requests';
+  $export['requests'] = $view;
 
   $view = new view();
-  $view->name = 'applications_reviewers';
+  $view->name = 'requests_reviewers';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Edit Applications';
+  $view->human_name = 'Edit Requests';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Edit Applications';
+  $handler->display->display_options['title'] = 'Edit Requests';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
@@ -737,7 +737,7 @@ function cambridge_datasets_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<div class="campl-content-container">
-<h2><i>No applications</i></h2>
+<h2><i>No requests</i></h2>
 </div>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Field: Content: Title */
@@ -847,7 +847,7 @@ function cambridge_datasets_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'application' => 'application',
+    'request' => 'request',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: First Name (field_user_firstname) */
@@ -923,8 +923,8 @@ function cambridge_datasets_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'applications_admin';
-  $export['applications_reviewers'] = $view;
+  $handler->display->display_options['path'] = 'requests_admin';
+  $export['requests_reviewers'] = $view;
 
   $view = new view();
   $view->name = 'collections';
@@ -1031,11 +1031,11 @@ print $row->title;
   $handler->display->display_options['fields']['title_2']['id'] = 'title_2';
   $handler->display->display_options['fields']['title_2']['table'] = 'node';
   $handler->display->display_options['fields']['title_2']['field'] = 'title';
-  $handler->display->display_options['fields']['title_2']['label'] = 'Apply';
+  $handler->display->display_options['fields']['title_2']['label'] = 'Request Access';
   $handler->display->display_options['fields']['title_2']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title_2']['alter']['text'] = 'Apply';
+  $handler->display->display_options['fields']['title_2']['alter']['text'] = 'Request Access';
   $handler->display->display_options['fields']['title_2']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['title_2']['alter']['path'] = 'cambridge_datasets/apply/[nid]';
+  $handler->display->display_options['fields']['title_2']['alter']['path'] = 'cambridge_datasets/request/[nid]';
   $handler->display->display_options['fields']['title_2']['link_to_node'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
@@ -2276,7 +2276,7 @@ print $row->title;
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
   $handler->display->display_options['footer']['area']['content'] = '<div class="content campl-content-container">
-<a href="/cambridge_datasets/apply/[nid]"><button class="cambridge-datasets-apply-button" type="button">Apply for access to data</button></a>
+<a href="/cambridge_datasets/request/[nid]"><button class="cambridge-datasets-request-button" type="button">Request access to datasets</button></a>
 </div>';
   $handler->display->display_options['footer']['area']['format'] = 'full_html';
   $handler->display->display_options['footer']['area']['tokenize'] = TRUE;
@@ -2342,18 +2342,18 @@ print $row->title;
   $export['overview'] = $view;
 
   $view = new view();
-  $view->name = 'review_all_applications';
+  $view->name = 'review_all_requests';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Review All Applications';
+  $view->human_name = 'Review All Requests';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'All Applications';
+  $handler->display->display_options['title'] = 'All Requests';
   $handler->display->display_options['css_class'] = 'campl-content-container';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
@@ -2384,7 +2384,7 @@ print $row->title;
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = '<h2><i>No pending applications</i></h2>';
+  $handler->display->display_options['empty']['area']['content'] = '<h2><i>No pending requests</i></h2>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Relationship: Content: Reviewers (field_reviewers) */
   $handler->display->display_options['relationships']['field_reviewers_value']['id'] = 'field_reviewers_value';
@@ -2401,7 +2401,7 @@ print $row->title;
   $handler->display->display_options['fields']['created_1']['id'] = 'created_1';
   $handler->display->display_options['fields']['created_1']['table'] = 'node';
   $handler->display->display_options['fields']['created_1']['field'] = 'created';
-  $handler->display->display_options['fields']['created_1']['label'] = 'Application Submitted';
+  $handler->display->display_options['fields']['created_1']['label'] = 'Request Submitted';
   $handler->display->display_options['fields']['created_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['created_1']['element_label_type'] = 'h2';
   $handler->display->display_options['fields']['created_1']['element_label_class'] = 'cambridge-dataset-extrapadding-top';
@@ -2421,7 +2421,7 @@ global $user;
 
 if (in_array(\'finalreviewer\', $user->roles) || in_array(\'administrator\', $user->roles))
 {
-print \'<div class="cambridge-datasets-finalreviewer-buttons"><a href="cambridge_datasets/applicationrevert?application_nid=\'.$row->nid.\'"><button class="cambridge-datasets-application-revert" type="button">Revert</button></a> <a href="cambridge_datasets/applicationreject?application_nid=\'.$row->nid.\'"><button class="cambridge-datasets-application-reject" type="button">Reject</button></a> <a href="cambridge_datasets/applicationapprove?application_nid=\'.$row->nid.\'"><button class="cambridge-datasets-application-approve" type="button">Approve</button></a> <a href="cambridge_datasets/applicationprocessed?application_nid=\'.$row->nid.\'"><button class="cambridge-datasets-application-processed" type="button">Processed</button></a></div>\';
+print \'<div class="cambridge-datasets-finalreviewer-buttons"><a href="cambridge_datasets/requestrevert?request_nid=\'.$row->nid.\'"><button class="cambridge-datasets-request-revert" type="button">Revert</button></a> <a href="cambridge_datasets/requestreject?request_nid=\'.$row->nid.\'"><button class="cambridge-datasets-request-reject" type="button">Reject</button></a> <a href="cambridge_datasets/requestapprove?request_nid=\'.$row->nid.\'"><button class="cambridge-datasets-request-approve" type="button">Approve</button></a> <a href="cambridge_datasets/requestprocessed?request_nid=\'.$row->nid.\'"><button class="cambridge-datasets-request-processed" type="button">Processed</button></a></div>\';
 }
 
 ?>';
@@ -2642,8 +2642,8 @@ print $extra_output;
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<form action="cambridge_datasets/updatereview" method="post" enctype="application/x-www-form-urlencoded">
-<input type="hidden" name="application_nid" value="[nid]">
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<form action="cambridge_datasets/updatereview" method="post" enctype="request/x-www-form-urlencoded">
+<input type="hidden" name="request_nid" value="[nid]">
 
 <h2>Add / Change Your Decision</h2>
 <div class="cambridge-datasets-add-comment">
@@ -2700,27 +2700,27 @@ print $extra_output;
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'application' => 'application',
+    'request' => 'request',
   );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'reviewallapplications';
-  $export['review_all_applications'] = $view;
+  $handler->display->display_options['path'] = 'reviewallrequests';
+  $export['review_all_requests'] = $view;
 
   $view = new view();
-  $view->name = 'review_pending_applications';
+  $view->name = 'review_pending_requests';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Review Pending Applications';
+  $view->human_name = 'Review Pending Requests';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Pending Applications';
+  $handler->display->display_options['title'] = 'Pending Requests';
   $handler->display->display_options['css_class'] = 'campl-content-container';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
@@ -2752,7 +2752,7 @@ print $extra_output;
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = '<h2><i>No pending applications</i></h2>';
+  $handler->display->display_options['empty']['area']['content'] = '<h2><i>No pending requests</i></h2>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Relationship: Content: Reviewers (field_reviewers) */
   $handler->display->display_options['relationships']['field_reviewers_value']['id'] = 'field_reviewers_value';
@@ -2769,7 +2769,7 @@ print $extra_output;
   $handler->display->display_options['fields']['created_1']['id'] = 'created_1';
   $handler->display->display_options['fields']['created_1']['table'] = 'node';
   $handler->display->display_options['fields']['created_1']['field'] = 'created';
-  $handler->display->display_options['fields']['created_1']['label'] = 'Application Submitted';
+  $handler->display->display_options['fields']['created_1']['label'] = 'Request Submitted';
   $handler->display->display_options['fields']['created_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['created_1']['element_label_type'] = 'h2';
   $handler->display->display_options['fields']['created_1']['element_label_class'] = 'cambridge-dataset-extrapadding-top';
@@ -2789,7 +2789,7 @@ global $user;
 
 if (in_array(\'finalreviewer\', $user->roles) || in_array(\'administrator\', $user->roles))
 {
-print \'<div class="cambridge-datasets-finalreviewer-buttons"><a href="cambridge_datasets/applicationreject?application_nid=\'.$row->nid.\'"><button class="cambridge-datasets-application-reject" type="button">Reject</button></a> <a href="cambridge_datasets/applicationapprove?application_nid=\'.$row->nid.\'"><button class="cambridge-datasets-application-approve" type="button">Approve</button></a> <a href="cambridge_datasets/applicationprocessed?application_nid=\'.$row->nid.\'"><button class="cambridge-datasets-application-processed" type="button">Processed</button></a></div>\';
+print \'<div class="cambridge-datasets-finalreviewer-buttons"><a href="cambridge_datasets/requestreject?request_nid=\'.$row->nid.\'"><button class="cambridge-datasets-request-reject" type="button">Reject</button></a> <a href="cambridge_datasets/requestapprove?request_nid=\'.$row->nid.\'"><button class="cambridge-datasets-request-approve" type="button">Approve</button></a> <a href="cambridge_datasets/requestprocessed?request_nid=\'.$row->nid.\'"><button class="cambridge-datasets-request-processed" type="button">Processed</button></a></div>\';
 }
 
 ?>';
@@ -3004,8 +3004,8 @@ print $extra_output;
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<form action="cambridge_datasets/updatereview" method="post" enctype="application/x-www-form-urlencoded">
-<input type="hidden" name="application_nid" value="[nid]">
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<form action="cambridge_datasets/updatereview" method="post" enctype="request/x-www-form-urlencoded">
+<input type="hidden" name="request_nid" value="[nid]">
 
 <h2>Add / Change Your Decision</h2>
 <div class="cambridge-datasets-add-comment">
@@ -3062,7 +3062,7 @@ print $extra_output;
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'application' => 'application',
+    'request' => 'request',
   );
   /* Filter criterion: Content: Status (field_status) */
   $handler->display->display_options['filters']['field_status_value']['id'] = 'field_status_value';
@@ -3074,8 +3074,8 @@ print $extra_output;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'reviewapplications';
-  $export['review_pending_applications'] = $view;
+  $handler->display->display_options['path'] = 'reviewrequests';
+  $export['review_pending_requests'] = $view;
 
   $view = new view();
   $view->name = 'reviews';
