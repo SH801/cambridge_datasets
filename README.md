@@ -1,159 +1,156 @@
-University of Cambridge install profile
-=======================================
 
-This install profile contains everything required for a University of Cambridge Drupal site (such as the University's house style and Raven authentication), and includes a variety of modules commonly used (such as Workbench, Media and CKEditor). Some modules are pre-configured, others are bundled; important patches are also applied to some modules where there hasn't been a new stable release.
+# Cambridge Datasets Application
 
-Installing a new Drupal site
-----------------------------
+The <b>Cambridge Datasets Application</b> allows external users to submit a formal request to access one or more Cambridge University datasets. The Datasets Application forwards the request to internal reviewers who then submit their comments via the application. A final reviewer approves or rejects the user’s request within the application, based on the comments of previous reviewers. 
 
-In a fresh copy of Drupal extract the contents of this profile to `/profiles/cambridge/`, then follow the normal Drupal installation process. On the first screen you will see the option to use the Cambridge install profile:
+The <b>Cambridge Datasets Application</b> uses Drupal as an application framework and comes as a <i>Drupal Profile</i>, extending the `Cambridge 2.0 Full Profile` available from: 
 
-![Select profile](doc/select_profile.png)
+https://github.com/misd-service-development/drupal-cambridge-profile/releases
 
-(If you have an existing site, presumably using one of Drupal's bundled install profiles, and would like to switch to this install profile, you can [Google how to do it](https://www.google.co.uk/search?q=drupal+switching+install+profiles). It won't configure the site, but can be useful if you would like to use the modules provided by the profile.)
+The <b>Cambridge Datasets Drupal Profile</b> contains everything required for a University of Cambridge Drupal site (such as the University's house style and Raven authentication), and includes a variety of modules commonly used (such as Workbench, Media and CKEditor). 
 
-Updating the profile
---------------------
+## Installing Cambridge Datasets Application
 
-New versions of the profile will be released every couple of months (sooner if there are security fixes), containing updates to modules (including patches), as well as new modules/functionality.
+### 1. Create MySQL Database
+Logon to MySQL as root user and create new database for Drupal:
 
-When updating the profile, replace the whole contents of the `/profiles/cambridge/` folder then run Drupal's update process.
+```
+CREATE DATABASE drupal_datasets
+```
 
-You shouldn't normally make changes to the `/profiles/cambridge/` folder (including trying to updates profile-provided modules through Drupal's update manager), as you may run into problems trying to update the profile in the future.
+Create Drupal user:
 
-If you do need a different version of a module to what the profile provides, however, you can override it by placing your version in your site's folder (so one of `/sites/all/modules/`, `/sites/default/modules/` or `/sites/www.mysite.cam.ac.uk/modules/`). When the profile is updated to include the new version you should then remove your override and let Drupal revert back to using the profile's version.
+```
+CREATE USER 'drupaluser'@'localhost' IDENTIFIED BY '[enter_drupal_password]';
+```
 
+Give new user access to Drupal database:
+```
+GRANT ALL PRIVILEGES ON drupal_datasets.* TO 'drupaluser'@'localhost';
+FLUSH PRIVILEGES
+```
 
-List of currently included modules
-----------------------------------
+### 2a. Download Application - Fastest
+- Install 'Drush 7' Drupal command line tool by following instructions at:
+https://docs.drush.org/en/7.x/install/
 
-There have been requests in earlier versions of the Profile for a full list of supported / included modules in the Profile, so with the release of version 1.7 we are now including this. The list of included modules is as follows:
+- Navigate to the parent web folder you wish to serve the application from and type:
+```
+drush dl drupal-7
+sudo mv drupal-7* drupal
+cd drupal/profiles/
+git clone https://github.com/SH801/cambridge_datasets_application.git
+cd ../../
+sudo chown -R _www:_www drupal
+```
+Note: you should replace `_www` with the user/group your webserver is running under.
 
-Contributed Modules
--------------------
+- Configure your webserver to point to the `drupal` folder created above.
 
-Admin Menu
-Admin Views
-Advanced Help
-Auto Entity Label
-Block Title Link
-Calendar
-CKEditor
-CKEditor Link
-Context
-Crazy Egg
-CSS Injector
-CTools
-Date
-Delta
-Devel
-Diff
-Disqus
-Easy Breadcrumb
-Email
-Entity
-Entity Reference
-Environment Indicator
-Expire
-Facet API
-Fancybox
-Features
-Features Extra
-Feeds
-Feeds Entity Processor
-Feeds Tamper
-Feeds Xpath Parser
-Field Collection
-Field Display Label
-Field Group
-Field Permissions
-Field Validation
-File Resumable Upload
-Filefield Paths
-Filefield Sources
-Global Redirect
-Google Analytics
-Hierarchical Select
-Honeypot
-Image API Optimize
-Imagecache External
-Image Crop
-Job Scheduler
-Libraries
-Link
-Link Checker
-Media
-Media Flickr
-Media Soundcloud
-Media Vimeo
-Media YouTube
-Memcache
-Menu Admin Per Menu
-Menu Block
-Menu First Child
-Menu Force
-Menu Trail By Path
-Menu View Unpublished
-Metatag
-Module Filter
-Multiselect
-Nodequeue
-Pathauto
-Pathauto Persist
-Pathologic
-Persistent Menu Items
-Publish Content
-Raven (Cambridge authored module)
-Real Name
-Redirect
-RESTful Web Services
-Role Delegation
-Rules
-Scheduler
-Search API
-Search API DB
-Select Or Other
-Share This
-Similar Terms
-Smart Trim
-Strongarm
-Synonyms
-Taxonomy Access Control Lite
-Telephone
-Term Merge
-Token
-Transliteration
-Twitter Block
-UUID
-Varnish
-View Unpublished
-Views
-Views Accordion
-Views Bulk Operations
-Views Data Export
-Views RSS
-Webform
-Webform Conditional
-Workbench
-Workbench Access
-Workbench Media
-Workbench Moderation
-XML Sitemap
+### 2b. Download Application - Step-by-step
 
+- Download Drupal 7 from:
+https://www.drupal.org/project/drupal
 
-Cambridge Feature Modules
--------------------------
+- Unpack the Drupal archive and move to the appropriate location on your webserver
 
-Body Field Definition - Utility module used by other features that create content types.
-Cam Access Handling - Provides the standard "access denied" blocks for anonymous and logged in users.
-Cambridge Carousel - Provides the carousel functionality used on the homepage of many Cambridge websites.
-Cambridge Events - Provides the Events content type and associated views. 
-Cambridge Image Styles - Provides various image styles (e.g. leading images, carousel sized image, teaser images). 
-Cambridge Link - Provides the Link content type.
-Cambridge News - Provides the News content type.
-Cambridge Questions and Answers - Provides the Q&A content type and associated functionality.
-Cambridge Related Links - Provides the related links functionality. 
-Cambridge Teasers - Provides a variety of teaser formats as Drupal view modes.
-Webform Date Format - Converts the date format of webforms from the American default to British. 
- 
-# cambridge_datasets
+- Download the Cambridge Datasets Drupal profile from: 
+https://github.com/SH801/cambridge_datasets_application/archive/master.zip
+
+- Unzip the archive, rename to `cambridge_datasets_application` and move to the `drupal/profiles/` folder
+
+- Navigate to the top directory containing the Drupal folder and type:
+```
+sudo chown -R _www:_www drupal
+```
+
+Note: you should replace `_www` with the user/group your webserver is running under.
+
+### 3. Install Cambridge Datasets Application
+Using a web browser, navigate to the Drupal folder served by your webserver. You should see the following screen:
+
+![Drupal Install Step 1](doc/drupal_install_1.png)
+
+Click <b>Save and continue</b>. After a while you should see the following screen:
+
+![Drupal Install Step 2](doc/drupal_install_2.png)
+
+Enter the fields exactly as they appear above; enter the password used to create the `drupaluser` above in the <b>Database password</b> field (see <b>Create MySQL Database</b> section, above). 
+
+Click <b>Save and continue</b>. After a while you should see the following screen:
+
+![Drupal Install Step 3](doc/drupal_install_3.png)
+
+It is recommended you copy the field inputs as they appear above, changing the `Site e-mail address` and `Email address` fields to reflect the email address of the site administrator. Click <b>Save and continue</b> to finish the setup process.
+
+Once the install has completed, click <b>Go to site</b> and you should see:
+
+![Drupal Install Step 4](doc/drupal_install_4.png)
+
+### 4. Additional configuration
+Before you can start using the application, you will need to configure your SMTP settings and enter the path of a folder that will store backups of submitted requests (the <b>Datastore Path</b>).
+
+#### SMTP Settings 
+To enter your SMTP settings, click <b>Admin -> SMTP Settings</b>. Once you have entered your SMTP settings, check they work by clicking <b>Admin -> Send test email</b>.
+
+#### Datastore Folder
+A backup of all requests submitted will be saved into a backup folder. To set up this folder, do the following:
+- Login to your webserver and create the backup folder, eg `/home/user/cambridgedatasets/saveddata`
+- Give webserver permission to write to backup folder by going to parent directory and changing owner:
+```
+cd /home/user/cambridgedatasets
+sudo chown -R _www:_www saveddata
+```
+- Go to Drupal, click on the <b>Cambridge Datasets Module Settings</b> button on the top menu bar and enter the path into the <b>Datastore Path</b> field, eg. `/home/user/cambridgedatasets`
+
+#### Setting up cron job
+A cron job must be set up to ensure mail is delivered to reviewers and applicants on a periodic basis. To set up the cron job, do the following:
+- Copy the file from `cambridge_datasets_application/cron/processmailqueue.sh` to a separate folder outside the Drupal folder, eg `/home/user/cambridgedatasets/`
+- Edit `processmailqueue.sh` to reflect the website address of your application. For example change:
+```
+http://datasets.yourdepartment.cam.ac.uk/cambridge_datasets/processmessagequeue
+```
+
+TO
+
+```
+http://datasets.psychiatry.cam.ac.uk/cambridge_datasets/processmessagequeue
+```
+
+- Give `processmailqueue.sh` the necessary permissions to execute by typing:
+```
+sudo chmod +x processmailqueue.sh
+```
+- Set up a cronjob to run `processmailqueue.sh` by typing:
+```
+crontab -e
+```
+- Enter a crontab formatted string, for example:
+
+```
+# Every minute:
+* * * * * /home/user/cambridgedatasets/processmailqueue.sh
+```
+
+OR:
+
+```
+# Every hour:
+0 * * * * /home/user/cambridgedatasets/processmailqueue.sh
+```
+Save the crontab. 
+
+- Type `mail` to check that every call to `processmailqueue.sh` generates no errors.
+
+- To check the cron job is working correctly with the Datasets system, go to <b>Admin -> Add test email to queue</b>. You should be sent a test email the next time the cron job is run.
+
+- Once you are satisfied the cron job is running as it should, type 
+```
+crontab -e
+``` 
+
+- Add the following to the top of the cron job and save the job to prevent the cron job sending an internal mail every time it's run:
+
+```
+MAILTO=""
+```
