@@ -15,7 +15,7 @@ The <b>Cambridge Datasets Drupal Profile</b> contains everything required for a 
 Logon to MySQL as root user and create new database for Drupal:
 
 ```
-CREATE DATABASE drupal_datasets
+CREATE DATABASE drupal_datasets;
 ```
 
 Create Drupal user:
@@ -27,11 +27,12 @@ CREATE USER 'drupaluser'@'localhost' IDENTIFIED BY '[enter_drupal_password]';
 Give new user access to Drupal database:
 ```
 GRANT ALL PRIVILEGES ON drupal_datasets.* TO 'drupaluser'@'localhost';
-FLUSH PRIVILEGES
+FLUSH PRIVILEGES;
 ```
 
 ### 2a. Download Application - Fastest
-- Install 'Drush 7' Drupal command line tool by following instructions at:
+- Install `Drush 7` Drupal command line tool by following instructions at:
+
 https://docs.drush.org/en/7.x/install/
 
 - Navigate to the parent web folder you wish to serve the application from and type:
@@ -50,11 +51,13 @@ Note: you should replace `_www` with the user/group your webserver is running un
 ### 2b. Download Application - Step-by-step
 
 - Download Drupal 7 from:
+
 https://www.drupal.org/project/drupal
 
 - Unpack the Drupal archive and move to the appropriate location on your webserver
 
 - Download the Cambridge Datasets Drupal profile from: 
+
 https://github.com/SH801/cambridge_datasets_application/archive/master.zip
 
 - Unzip the archive, rename to `cambridge_datasets_application` and move to the `drupal/profiles/` folder
