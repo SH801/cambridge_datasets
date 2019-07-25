@@ -72,7 +72,7 @@ function cambridge_datasets_ckeditor_profile_defaults() {
     'CKEditor Global Profile' => array(
       'name' => 'CKEditor Global Profile',
       'settings' => array(
-        'ckeditor_path' => '%b/profiles/cambridge/libraries/ckeditor',
+        'ckeditor_path' => '%b/profiles/cambridge_datasets_application/libraries/ckeditor',
       ),
       'input_formats' => array(),
     ),

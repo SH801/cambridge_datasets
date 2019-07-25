@@ -228,7 +228,7 @@ function cambridge_datasets_application_install() {
   $settings = unserialize($settings);
 
   // Set path to CKEditor library.
-  $settings['ckeditor_path'] = '%b/profiles/cambridge/libraries/ckeditor';
+  $settings['ckeditor_path'] = '%b/profiles/cambridge_datasets_application/libraries/ckeditor';
 
   db_update('ckeditor_settings')
     ->fields(array('settings' => serialize($settings)))
