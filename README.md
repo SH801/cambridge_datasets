@@ -40,7 +40,7 @@ https://docs.drush.org/en/7.x/install/
 drush dl drupal-7
 sudo mv drupal-7* drupal
 cd drupal/profiles/
-git clone https://github.com/SH801/cambridge_datasets_application.git
+git clone https://github.com/Cambridge-IDE/cambridge_datasets_application.git
 cd ../../
 sudo chown -R _www:_www drupal
 ```
@@ -58,7 +58,7 @@ https://www.drupal.org/project/drupal
 
 - Download the Cambridge Datasets Drupal profile from: 
 
-https://github.com/SH801/cambridge_datasets_application/archive/master.zip
+https://github.com/Cambridge-IDE/cambridge_datasets_application/archive/master.zip
 
 - Unzip the archive, rename to `cambridge_datasets_application` and move to the `drupal/profiles/` folder
 
